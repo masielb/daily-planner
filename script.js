@@ -1,6 +1,9 @@
+var saveBtn = $(".saveBtn");
+
+
+//starting jQuery
 $(document).ready(function() {
     // listen for save button clicks
-  
     $(".saveBtn").on("click", function() {
       // get nearby values
       var value = $(this).siblings(".description").val();
@@ -10,7 +13,7 @@ $(document).ready(function() {
       console.log('time:', time);
   
       // save the value in localStorage as time
-      
+      localStorage.setItem(value, time);
     });
   
     function hourUpdater() {
