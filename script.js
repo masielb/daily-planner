@@ -1,9 +1,10 @@
 var saveBtn = $(".saveBtn");
+var currentHour = moment().format("HH");
+var timeBlocks = $(".container");
 
-
-//starting jQuery
 $(document).ready(function() {
     // listen for save button clicks
+
     $(".saveBtn").on("click", function() {
       // get nearby values
       var value = $(this).siblings(".description").val();
@@ -30,14 +31,18 @@ $(document).ready(function() {
         // check if we've moved past this time
         
         // if the current hour is greater than the block hour
-        // then add class "past"
-  
-        // if they are equal
-        // then remove class "past" and add class "present"
-  
-        // else
-        // remove class "past", remove class "present", add class "future"
+        if (currentHour > blockHour) {
+          // then add class "past"
+          $(".description").addClass("past");
+        }
         
+        // if they are equal
+        if (currentHour === blockHour) {
+          // then remove class "past" and add class "present"
+          $(".description").removeClass("past");
+        } else { // else remove class "past", remove class "present", add class "future"
+          $(".description").removeClass("past").removeClass("present").addClass("future");
+        }
       });
     }
   
