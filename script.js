@@ -14,7 +14,7 @@ $(document).ready(function() {
       console.log('time:', time);
   
       // save the value in localStorage as time
-      localStorage.setItem("time", value);
+      localStorage.setItem(time, value);
     });
   
     function hourUpdater() {
@@ -31,27 +31,28 @@ $(document).ready(function() {
         // check if we've moved past this time
         
         // if the current hour is greater than the block hour
-        if (currentHour > blockHour) {
+        if (blockHour < currentHour) {
           // then add class "past"
           $("this").addClass("past");
         }
         
         // if they are equal
-        if (currentHour === blockHour) {
+        if (blockHour === currentHour) {
           // then remove class "past" and add class "present"
-          $("this").removeClass("past");
+          $("this").removeClass("past").addClass("present");
         } else { // else remove class "past", remove class "present", add class "future"
-          $("this").removeClass("past").removeClass("present").addClass("future");
+          $("this").removeClass("past present").addClass("future");
         }
       });
     }
   
     hourUpdater();
-  
+    
     // set up interval to check if current time needs to be updated
+    setInterval(function() {hourUpdater}, 15000);
     // which means execute hourUpdater function every 15 seconds
-  
     // load any saved data from localStorage
+
     
   
     // display current day on page
