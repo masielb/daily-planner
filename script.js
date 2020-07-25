@@ -14,7 +14,7 @@ $(document).ready(function() {
       console.log('time:', time);
   
       // save the value in localStorage as time
-      localStorage.setItem(value, time);
+      localStorage.setItem("time", value);
     });
   
     function hourUpdater() {
