@@ -33,15 +33,15 @@ $(document).ready(function() {
         // if the current hour is greater than the block hour
         if (currentHour > blockHour) {
           // then add class "past"
-          $(".description").addClass("past");
+          $("this").addClass("past");
         }
         
         // if they are equal
         if (currentHour === blockHour) {
           // then remove class "past" and add class "present"
-          $(".description").removeClass("past");
+          $("this").removeClass("past");
         } else { // else remove class "past", remove class "present", add class "future"
-          $(".description").removeClass("past").removeClass("present").addClass("future");
+          $("this").removeClass("past").removeClass("present").addClass("future");
         }
       });
     }
