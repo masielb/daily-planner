@@ -3,56 +3,42 @@ var currentHour = moment().format("HH");
 var timeBlocks = $(".container");
 
 $(document).ready(function() {
-    // listen for save button clicks
 
     $(".saveBtn").on("click", function() {
-      // get nearby values
       var value = $(this).siblings(".description").val();
       var time = $(this).parent().attr("id");
   
       console.log('value:', value);
       console.log('time:', time);
   
-      // save the value in localStorage as time
       localStorage.setItem(time, value);
     });
   
     ///LOOP /// 
     function hourUpdater() {
-      // get current number of hours
       var currentHour = moment().hours();
       console.log('current hour:', currentHour);
   
-      // loop over time blocks
       $(".time-block").each(function() {
         var blockHour = parseInt($(this).attr("id").split("-")[1]);
   
-        console.log("block hour:", blockHour);
-  
-        // check if we've moved past this time
+        console.log("block hour:", blockHour);  
         
-        // if the current hour is greater than the block hour
         if (blockHour < currentHour) {
-          // then add class "past"
           $(this).addClass("past");
-          //else if
         } else if (blockHour === currentHour) {
-          // then remove class "past" and add class "present"
           $(this).removeClass("past").addClass("present");
-        } else { // else remove class "past", remove class "present", add class "future"
+        } else { 
           $(this).removeClass("past present").addClass("future");
         }
       });
     }
 
-    //calls the hourUpdater function
     hourUpdater();
     
-    // set up interval to check if current time needs to be updated
-    // which means execute hourUpdater function every 15 seconds
+    // means execute hourUpdater function every 15 seconds
     setInterval(function() {hourUpdater();}, 15000);
     
-    // load any saved data from localStorage
     var hour9 = localStorage.getItem("hour-9");
     $("#hour-9 .description").val(hour9);
     
