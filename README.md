@@ -18,7 +18,7 @@ Daily Planner is a simple calendar app for scheduling your normal work day. Bloc
 Link:
 
 ## Site Picture 
-![app](appscreenshot.png)
+![app picture](screenshot.png)
 
 ## Built With
 * [jQuery](https://api.jquery.com/)
